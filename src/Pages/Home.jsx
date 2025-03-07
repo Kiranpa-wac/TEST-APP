@@ -10,6 +10,9 @@ const Home = () => {
       <Link to="/form" className="btn btn-secondary">
         Form
       </Link>
+      <Link to="/installment2" className="btn btn-primary ms-2">
+        Installment2
+      </Link>
     </div>
   );
 };
