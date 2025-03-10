@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 import InstallmentForm2 from "./InstallmentForm2";
 import InstallmentsTable from "./InstallmentTable";
 import useInstallments from "./useInstallment";
@@ -49,6 +50,7 @@ const Installment = () => {
           />
         </div>
       )}
+      <ToastContainer position="top-right" autoClose={5000} />
     </div>
   );
 };

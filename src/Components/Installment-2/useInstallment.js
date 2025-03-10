@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const useInstallment = () => {
   const [amount, setAmount] = useState("");
@@ -80,7 +81,7 @@ const useInstallment = () => {
     );
 
     if (checkedItems.length < 2) {
-      alert("Please select at least two installments to merge.");
+      toast.error("Please select at least two installments to merge.");
       return;
     }
 
@@ -136,7 +137,7 @@ const useInstallment = () => {
   const handleUnmerge = (mergedId) => {
     const mergedInst = installmentsData.find((item) => item.id === mergedId);
     if (!mergedInst || !mergedInst.mergedIds) {
-      alert("No merged installment found for unmerging.");
+      toast.error("No merged installment found for unmerging.");
       return;
     }
 
@@ -155,7 +156,7 @@ const useInstallment = () => {
     );
 
     if (selectedItems.length !== 1) {
-      alert("Please select exactly one installment to split.");
+      toast.error("Please select exactly one installment to split.");
       return;
     }
 
@@ -165,7 +166,7 @@ const useInstallment = () => {
       installmentToSplit.installmentNum.toString().includes(".") ||
       installmentToSplit.installmentNum.toString().includes("+")
     ) {
-      alert("This installment is already split.");
+      toast.error("This installment is already split.");
       return;
     }
 
