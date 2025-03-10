@@ -31,6 +31,7 @@ const InstallmentForm2 = ({
         onChange={onInstallmentCountChange}
         id="installment-count"
         className="form-select"
+        disabled={!amount}
       >
         <option value="0">Select</option>
         {Array.from({ length: 12 }, (_, i) => (

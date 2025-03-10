@@ -10,8 +10,9 @@ const useInstallment = () => {
       const parsedAmount = parseFloat(newAmount);
       const installmentAmount =
         newCount > 0 ? (isNaN(parsedAmount) ? 0 : parsedAmount / newCount) : 0;
+        let isCounter = 1;
       const newData = Array.from({ length: newCount }, (_, index) => ({
-        id: index + 1,
+        id: isCounter++,
         checked: false,
         installmentNum: index + 1,
         dueDate: "",
@@ -23,7 +24,7 @@ const useInstallment = () => {
       setInstallmentsData([]);
     }
   };
-
+console.log(installmentCount)
   const handleAmountChange = (e) => {
     const newAmount = e.target.value;
     setAmount(newAmount);
@@ -185,7 +186,7 @@ const useInstallment = () => {
       id: newId2,
       checked: false,
       installmentNum: installmentToSplit.installmentNum + ".2",
-      dueDate: installmentToSplit.dueDate,
+      dueDate: '',
       amount: splitAmount,
       show: true,
       splitFrom: installmentToSplit.id,
