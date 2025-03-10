@@ -10,7 +10,7 @@ const useInstallment = () => {
       const parsedAmount = parseFloat(newAmount);
       const installmentAmount =
         newCount > 0 ? (isNaN(parsedAmount) ? 0 : parsedAmount / newCount) : 0;
-        let isCounter = 1;
+      let isCounter = 1;
       const newData = Array.from({ length: newCount }, (_, index) => ({
         id: isCounter++,
         checked: false,
@@ -24,7 +24,7 @@ const useInstallment = () => {
       setInstallmentsData([]);
     }
   };
-console.log(installmentCount)
+  console.log(installmentCount);
   const handleAmountChange = (e) => {
     const newAmount = e.target.value;
     setAmount(newAmount);
@@ -57,11 +57,10 @@ console.log(installmentCount)
       if (firstInstallment && firstInstallment.id === id && newDueDate) {
         updatedData = updatedData.map((item) => {
           if (item.installmentNum > 1) {
-            
             const baseDate = new Date(newDueDate);
-            
+
             baseDate.setMonth(baseDate.getMonth() + (item.installmentNum - 1));
-            
+
             const year = baseDate.getFullYear();
             const month = String(baseDate.getMonth() + 1).padStart(2, "0");
             const day = String(baseDate.getDate()).padStart(2, "0");
@@ -100,7 +99,7 @@ console.log(installmentCount)
 
     const dueDates = checkedItems
       .map((item) => item.dueDate)
-      .filter((date) => date); 
+      .filter((date) => date);
     const mergedDueDate =
       dueDates.length > 0
         ? dueDates.reduce((earliest, current) =>
@@ -118,7 +117,7 @@ console.log(installmentCount)
       dueDate: mergedDueDate,
       amount: mergedAmount,
       show: true,
-      mergedIds: checkedItems.map((item) => item.id), 
+      mergedIds: checkedItems.map((item) => item.id),
     };
 
     const updatedData = installmentsData.map((item) =>
@@ -162,7 +161,10 @@ console.log(installmentCount)
 
     const installmentToSplit = selectedItems[0];
 
-    if (installmentToSplit.installmentNum.toString().includes(".")) {
+    if (
+      installmentToSplit.installmentNum.toString().includes(".") ||
+      installmentToSplit.installmentNum.toString().includes("+")
+    ) {
       alert("This installment is already split.");
       return;
     }
@@ -186,7 +188,7 @@ console.log(installmentCount)
       id: newId2,
       checked: false,
       installmentNum: installmentToSplit.installmentNum + ".2",
-      dueDate: '',
+      dueDate: "",
       amount: splitAmount,
       show: true,
       splitFrom: installmentToSplit.id,
