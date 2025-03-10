@@ -25,7 +25,7 @@ const InstallmentForm = () => {
   const handleInstallmentCountChange = (e) => {
     setInstallmentsCount(parseInt(e.target.value));
   };
-
+console.log(installmentsData)
   return (
     <div className="container mt-4">
       <div className="card shadow p-4">

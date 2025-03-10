@@ -70,8 +70,6 @@ const InstallmentTable = ({
                   placeholder="Select due date"
                   value={inst.dueDate}
                   onChange={(e) => handleDueDateChange(inst.id, e.target.value)}
-                  // For the first installment, the minimum date is today.
-                  // For subsequent installments, the minimum date is set to the day after the previous installment's due date.
                   min={
                     index === 0
                       ? today
