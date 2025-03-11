@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home'
 import InstallmentPage from './Pages/InstallmentPage'
 import FormPage from './Pages/FormPage'
+import TestPage from './Pages/TestPage'
 import InstallmentPage2 from './Pages/InstallmentPage2'
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/installment" element={<InstallmentPage />} />
           <Route path='/installment2' element={<InstallmentPage2 />} />
           <Route path='/form' element={<FormPage />} />
+          <Route path='/test' element={<TestPage />} />
         </Routes>
       </Router>
     </div>
