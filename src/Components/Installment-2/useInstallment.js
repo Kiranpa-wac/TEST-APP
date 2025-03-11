@@ -86,7 +86,13 @@ const useInstallment = () => {
       return;
     }
 
-    if (checkedItems.some((item) => item.installmentNum.toString().includes(".") || item.installmentNum.toString().includes("+"))) {
+    if (
+      checkedItems.some(
+        (item) =>
+          item.installmentNum.toString().includes(".") ||
+          item.installmentNum.toString().includes("+")
+      )
+    ) {
       toast.error("Selected installments are already merged or split.");
       return;
     }
