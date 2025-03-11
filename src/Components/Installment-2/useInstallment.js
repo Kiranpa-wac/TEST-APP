@@ -9,8 +9,9 @@ const useInstallment = () => {
   const updateInstallmentsData = (newAmount, newCount) => {
     if (newCount > 0) {
       const parsedAmount = parseFloat(newAmount);
-      const installmentAmount =
-        newCount > 0 ? (isNaN(parsedAmount) ? 0 : parsedAmount / newCount) : 0;
+      const installmentAmount = isNaN(parsedAmount)
+        ? 0
+        : (parsedAmount / newCount).toFixed(3);
       let isCounter = 1;
       const newData = Array.from({ length: newCount }, (_, index) => ({
         id: isCounter++,
@@ -82,6 +83,11 @@ const useInstallment = () => {
 
     if (checkedItems.length < 2) {
       toast.error("Please select at least two installments to merge.");
+      return;
+    }
+
+    if (checkedItems.some((item) => item.installmentNum.toString().includes(".") || item.installmentNum.toString().includes("+"))) {
+      toast.error("Selected installments are already merged or split.");
       return;
     }
 
